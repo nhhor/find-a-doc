@@ -7,7 +7,7 @@ import { BetterDoctorService } from './../src/BetterDoctor-service.js';
 $(document).ready(function() {
 
   $('#medicalIssueButton').click(function() {
-    $("#medicalIssueResultsList").children().remove();
+    $("#doctorNameResultsList").children().remove();
     let medicalIssue = $("#medicalIssue").val();
 
     (async () => {
@@ -39,7 +39,7 @@ $(document).ready(function() {
         };
         let docAcceptsNewPatients = response.data[i].practices[0].accepts_new_patients;
 
-        $("#medicalIssueResultsList").append('<li id="'+id+'" class="doctorNameClass" data-toggle="modal" data-target="#doctorModal" data-docfirstname="'+ docFirstName + '" data-doclastlame="'+ docLastName + '" data-doctitle="'+ docTitle + '" data-practicename="'+ practiceName + '" data-docaddressl1="'+ docAddressL1 + '" data-docaddressl2="'+ docAddressL2 + '" data-docphonenumber="'+ docPhoneNumber + '" data-docwebsite="'+ docWebsite() + '" data-docacceptsnewpatients="'+ docAcceptsNewPatients + '" >'+ docFirstName + ' ' + docLastName + ', ' + docTitle + '.');
+        $("#doctorNameResultsList").append('<li id="'+id+'" class="doctorNameClass" data-toggle="modal" data-target="#doctorModal" data-docfirstname="'+ docFirstName + '" data-doclastlame="'+ docLastName + '" data-doctitle="'+ docTitle + '" data-practicename="'+ practiceName + '" data-docaddressl1="'+ docAddressL1 + '" data-docaddressl2="'+ docAddressL2 + '" data-docphonenumber="'+ docPhoneNumber + '" data-docwebsite="'+ docWebsite() + '" data-docacceptsnewpatients="'+ docAcceptsNewPatients + '" >'+ docFirstName + ' ' + docLastName + ', ' + docTitle + '.');
       }
     }
   });
@@ -76,7 +76,7 @@ $(document).ready(function() {
           }
         };
         let docAcceptsNewPatients = response.data[i].practices[0].accepts_new_patients;
-        
+
         $("#doctorNameResultsList").append('<li id="'+id+'" class="doctorNameClass" data-toggle="modal" data-target="#doctorModal" data-docfirstname="'+ docFirstName + '" data-doclastlame="'+ docLastName + '" data-doctitle="'+ docTitle + '" data-practicename="'+ practiceName + '" data-docaddressl1="'+ docAddressL1 + '" data-docaddressl2="'+ docAddressL2 + '" data-docphonenumber="'+ docPhoneNumber + '" data-docwebsite="'+ docWebsite() + '" data-docacceptsnewpatients="'+ docAcceptsNewPatients + '" >'+ docFirstName + ' ' + docLastName + ', ' + docTitle + '.');
       }
     }
@@ -99,8 +99,9 @@ $(document).ready(function() {
 
     var modal = $(this);
     modal.find('.modal-title').text(docFirstName + " " + docLastName + ", " + docTitle);
-    modal.find('.modal-body').text(docFirstName);
+    modal.find('.modal-body').html('<ul><li><strong>Practice: </strong>' + practiceName + '</li><li><strong>Address:</strong><ul><li>' + docAddressL1 + '</li><li>' + docAddressL2 + '</li></ul><li><strong>Phone: </strong>' + docPhoneNumber + '</li><li><strong>Website: </strong>' + docWebsite + '</li><li><strong>Accepting new patients: </strong>' + docAcceptsNewPatients + '</li></ul>');
   });
+
 
 
 
