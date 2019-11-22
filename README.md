@@ -45,7 +45,8 @@ This project was made as part of a coding project for Noah Horwitz, a student at
 
 
 ## References
-
+* This project uses the **BetterDoctor API** to function correctly.
+  * You can get your own API key to use or test this application [here](https://developer.betterdoctor.com/).
 
 ## Support and contact details
 Contact [example@sample.com](mailto:example@sample.com)

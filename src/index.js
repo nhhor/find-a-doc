@@ -22,8 +22,12 @@ $(document).ready(function() {
     // let values = Object.values(response.data[0]);
     // console.log("response.data: ",response.data);
     for (let i=0; i < keys.length; i++){
-      // response.data[i].practices.name
-      console.log(response.data[i]);
+      let docFirstName = response.data[i].profile.first_name;
+      let docLastName = response.data[i].profile.last_name;
+      let docTitle = response.data[i].profile.title;
+      let practiceName = response.data[i].practices[0].name;
+      $("#medicalIssueResultsList").append('<li>'+ docFirstName + ' ' + docLastName + ', ' + docTitle + '.<ul><li>Practicing at: ' + practiceName + '</li></ul>');
+      // console.log(docFirstName + ' ' + docLastName + ', ' + docTitle + '. Practicing at: ' + practiceName);
     }
   }
 });
