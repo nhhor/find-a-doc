@@ -18,10 +18,4 @@ export class BetterDoctorService {
       // console.error("There was an error handling your request: " + error.message);
     }
   }
-
-
-
-
-
-
 }
