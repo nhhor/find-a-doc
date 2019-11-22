@@ -2,7 +2,7 @@
 
 ##### By Noah Horwitz
 
-###### _First published 2019-11-20_
+###### _First published 2019-11-22_
 
 ## Description:
 This project was made as part of a coding project for Noah Horwitz, a student at _[Epicodus](http://www.epicodus.com)_, a vocational school for technology careers based in Portland, OR. The project is designed to create a website where users may enter a medical issue (ie: “sore throat”, "rash", etc.) into a form, submit it, and receive a list of doctors in your city (Portland or Seattle depending on where you are) who can treat their medical issue.
