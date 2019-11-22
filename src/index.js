@@ -21,16 +21,28 @@ $(document).ready(function() {
       // let values = Object.values(response.data[0]);
       // console.log("response.data: ",response.data);
       for (let i=0; i < keys.length; i++){
+        let id = i;
         let docFirstName = response.data[i].profile.first_name;
         let docLastName = response.data[i].profile.last_name;
         let docTitle = response.data[i].profile.title;
         let practiceName = response.data[i].practices[0].name;
-        let id = i;
-        $("#medicalIssueResultsList").append('<li id="'+id+'" class="doctorNameClass">'+ docFirstName + ' ' + docLastName + ', ' + docTitle + '.<ul><li class="practiceClass">Practicing at: ' + practiceName + '</li></ul>');
+        let docAddressL1 = response.data[i].practices[0].visit_address.street;
+        let docAddressL2 = (response.data[i].practices[0].visit_address.city + ", " + response.data[i].practices[0].visit_address.state + " " + response.data[i].practices[0].visit_address.zip);
+        let docPhoneNumber = response.data[i].practices[0].phones[0].number;
+        // let docWebsite = response.data[i].practices[0].website;
+        let docWebsite = function(){
+          if(response.data[i].practices[0].website === undefined) {
+            return "None provided.";
+          } else {
+            return response.data[i].practices[0].website;
+          }
+        };
+        let docAcceptsNewPatients = response.data[i].practices[0].accepts_new_patients;
+
+        $("#medicalIssueResultsList").append('<li id="'+id+'" class="doctorNameClass" data-toggle="modal" data-target="#doctorModal" data-docfirstname="'+ docFirstName + '" data-doclastlame="'+ docLastName + '" data-doctitle="'+ docTitle + '" data-practicename="'+ practiceName + '" data-docaddressl1="'+ docAddressL1 + '" data-docaddressl2="'+ docAddressL2 + '" data-docphonenumber="'+ docPhoneNumber + '" data-docwebsite="'+ docWebsite() + '" data-docacceptsnewpatients="'+ docAcceptsNewPatients + '" >'+ docFirstName + ' ' + docLastName + ', ' + docTitle + '.');
       }
     }
   });
-
 
   $('#doctorNameButton').click(function() {
     $("#doctorNameResultsList").children().remove();
@@ -47,24 +59,47 @@ $(document).ready(function() {
       // let values = Object.values(response.data[0]);
       // console.log("response.data: ",response.data);
       for (let i=0; i < keys.length; i++){
+        let id = i;
         let docFirstName = response.data[i].profile.first_name;
         let docLastName = response.data[i].profile.last_name;
         let docTitle = response.data[i].profile.title;
         let practiceName = response.data[i].practices[0].name;
-        let id = i;
-        $("#doctorNameResultsList").append('<li id="'+id+'" class="doctorNameClass">'+ docFirstName + ' ' + docLastName + ', ' + docTitle + '.<ul><li class="practiceClass">Practicing at: ' + practiceName + '</li></ul>');
+        let docAddressL1 = response.data[i].practices[0].visit_address.street;
+        let docAddressL2 = (response.data[i].practices[0].visit_address.city + ", " + response.data[i].practices[0].visit_address.state + " " + response.data[i].practices[0].visit_address.zip);
+        let docPhoneNumber = response.data[i].practices[0].phones[0].number;
+        // let docWebsite = response.data[i].practices[0].website;
+        let docWebsite = function(){
+          if(response.data[i].practices[0].website === undefined) {
+            return "None provided.";
+          } else {
+            return response.data[i].practices[0].website;
+          }
+        };
+        let docAcceptsNewPatients = response.data[i].practices[0].accepts_new_patients;
+        
+        $("#doctorNameResultsList").append('<li id="'+id+'" class="doctorNameClass" data-toggle="modal" data-target="#doctorModal" data-docfirstname="'+ docFirstName + '" data-doclastlame="'+ docLastName + '" data-doctitle="'+ docTitle + '" data-practicename="'+ practiceName + '" data-docaddressl1="'+ docAddressL1 + '" data-docaddressl2="'+ docAddressL2 + '" data-docphonenumber="'+ docPhoneNumber + '" data-docwebsite="'+ docWebsite() + '" data-docacceptsnewpatients="'+ docAcceptsNewPatients + '" >'+ docFirstName + ' ' + docLastName + ', ' + docTitle + '.');
       }
     }
   });
 
-  $('#exampleModal').on('show.bs.modal', function (event) {
+  // MODAL FUNCTIONALITY
+
+  $('#doctorModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
-    var recipient = button.data('whatever'); // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+    var docFirstName = button.data('docfirstname'); // Extract info from data-* attributes
+    var docLastName = button.data('doclastlame');
+    var docTitle = button.data('doctitle');
+    var practiceName = button.data('practicename');
+    var docAddressL1 = button.data('docaddressl1');
+    var docAddressL2 = button.data('docaddressl2');
+    var docPhoneNumber = button.data('docphonenumber');
+    var docWebsite = button.data('docwebsite');
+    var docAcceptsNewPatients = button.data('docacceptsnewpatients');
+
     var modal = $(this);
-    modal.find('.modal-title').text('New message to ' + recipient);
-    modal.find('.modal-body input').val(recipient);
+    modal.find('.modal-title').text(docFirstName + " " + docLastName + ", " + docTitle);
+    modal.find('.modal-body').text(docFirstName);
   });
 
 
