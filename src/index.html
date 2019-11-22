@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Portland's Find-a-Doc service</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1>Portland's Find-a-Doc service</h1>
+<head>
+  <meta charset="utf-8">
+  <title>Portland's Find-a-Doc service</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Portland's Find-a-Doc service</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Find the 10 closest doctors by a medical issue:</h4>
+        <div class="form-group">
+          <input id="medicalIssue" class="form-control" type="text" placeholder="Enter an issue here...">
+          <button id="medicalIssueButton" class="btn btn-primary" type="button" name="button">Submit</button>
+        </div>
+        <div class="medicalIssueResults">
+          <ul id="medicalIssueResultsList">
+          </ul>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <h4>Find the 10 closest doctors by a medical issue:</h4>
-
-          <div class="form-group">
-            <input id="medicalIssue" class="form-control" type="text" placeholder="Enter an issue here...">
-            <button id="medicalIssueButton" class="btn btn-primary" type="button" name="button">Submit</button>
-          </div>
-
-          <div class="medicalIssueResults">
-            <ul id="medicalIssueResultsList">
-              
-            </ul>
-          </div>
-
+      <div class="col-md-6">
+        <h4>Find the 10 closest doctors by doctor name:</h4>
+        <div class="form-group">
+          <input id="doctorName" class="form-control" type="text" placeholder="Enter an issue here...">
+          <button id="doctorNameButton" class="btn btn-primary" type="button" name="button">Submit</button>
         </div>
-        <div class="col-md-6">
-          <h4>x</h4>
+        <div class="doctorNameResults">
+          <ul id="doctorNameResultsList">
+          </ul>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>

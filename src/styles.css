@@ -10,3 +10,13 @@ h4 {
   margin-top: 10px;
   width: 50%;
 }
+
+.doctorNameClass {
+  font-style: normal;
+}
+
+  .practiceClass {
+    font-size: 12px;
+    font-style: italic;
+    font-stretch: extra-condensed;
+  }
