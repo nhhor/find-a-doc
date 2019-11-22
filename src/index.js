@@ -40,6 +40,14 @@ $(document).ready(function() {
     (async () => {
       let betterDoctorService = new BetterDoctorService();
       let response = await betterDoctorService.findDoctorByMedicalIssue(medicalIssue);
+
+      // DISPLAY ERROR CHECKER
+      if ((typeof response) == "string") {
+        $("#errorToggle").text("We're sorry, there was a "+response);
+      } else {
+        $("#errorToggle").text("Click on a name for more information.");
+      }
+
       getElements(response);
     })();
   });
@@ -53,6 +61,14 @@ $(document).ready(function() {
     (async () => {
       let betterDoctorService = new BetterDoctorService();
       let response = await betterDoctorService.findDoctorByDoctorName(doctorName);
+
+      // DISPLAY ERROR CHECKER
+      if ((typeof response) == "string") {
+        $("#errorToggle").text("We're sorry, there was a "+response);
+      } else {
+        $("#errorToggle").text("Click on a name for more information.");
+      }
+
       getElements(response);
     })();
   });
@@ -71,7 +87,7 @@ $(document).ready(function() {
     var docPhoneNumber = button.data('docphonenumber');
     var docWebsite = button.data('docwebsite');
     var docAcceptsNewPatients = button.data('docacceptsnewpatients');
-    
+
     var modal = $(this);
     modal.find('.modal-title').text(docFirstName + " " + docLastName + ", " + docTitle);
     modal.find('.modal-body').html('<ul><li><strong>Practice: </strong>' + practiceName + '</li><li><strong>Address:</strong><ul><li>' + docAddressL1 + '</li><li>' + docAddressL2 + '</li></ul><li><strong>Phone: </strong>' + docPhoneNumber + '</li><li><strong>Website: </strong>' + docWebsite + '</li><li><strong>Accepting new patients: </strong>' + docAcceptsNewPatients + '</li></ul>');
