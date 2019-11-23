@@ -6,15 +6,6 @@ h5 {
   text-align: center;
 }
 
-h6 {
-  text-align: center;
-  background-color: grey;
-  border-radius: 25%;
-  font-style: italic;
-  padding: 10px;
-
-}
-
 .form-group {
   text-align: center;
 }
@@ -23,6 +14,37 @@ h6 {
   margin-top: 10px;
   width: 50%;
 }
+
+#errorToggle {
+  display: none;
+  text-align: center;
+  background: rgb(128,128,128);
+  background: radial-gradient(circle, rgba(128,128,128,0.5) 50%, rgba(255,0,0,0.5) 75%, rgba(255,255,255,0) 100%);
+  border-radius: 25%;
+  font-style: italic;
+  padding: 10px;
+}
+
+#instructionToggle {
+  display: none;
+  text-align: center;
+  background: rgb(0,128,192);
+  background: radial-gradient(circle, rgba(0,128,192,0.5) 50%, rgba(192,128,0,0.5) 75%, rgba(255,255,255,0) 100%);
+  border-radius: 25%;
+  font-style: italic;
+  padding: 10px;
+}
+
+#noResultToggle {
+  display: none;
+  text-align: center;
+  background: rgb(128,128,128);
+  background: radial-gradient(circle, rgba(128,128,128,0.5) 50%, rgba(192,128,0,0.5) 75%, rgba(255,255,255,0) 100%);
+  font-style: italic;
+  padding: 10px;
+}
+
+
 
 .doctorNameClass {
   font-style: normal;

@@ -29,6 +29,29 @@ function getElements(response) {
   }
 }
 
+let serverErrorCheck = function(response){
+  if ((typeof response) == "string") {
+    $("#instructionToggle").fadeOut(100);
+    $("#errorToggle").text("We're sorry, there was a "+response);
+    $("#errorToggle").fadeIn(2000);
+  } else {
+    $("#errorToggle").fadeOut(100);
+    $("#instructionToggle").slideDown(1000);
+  }
+};
+
+let noResultCheck = function(response){
+  if (response.meta.count === 0) {
+    $("#instructionToggle").fadeOut(100);
+    $("#errorToggle").fadeOut(100);
+    $("#noResultToggle").slideDown(1000);
+  } else {
+    $("#noResultToggle").fadeOut(100);
+  }
+};
+
+
+
 $(document).ready(function() {
 
 
@@ -40,15 +63,9 @@ $(document).ready(function() {
     (async () => {
       let betterDoctorService = new BetterDoctorService();
       let response = await betterDoctorService.findDoctorByMedicalIssue(medicalIssue);
-
-      // DISPLAY ERROR CHECKER
-      if ((typeof response) == "string") {
-        $("#errorToggle").text("We're sorry, there was a "+response);
-      } else {
-        $("#errorToggle").text("Click on a name for more information.");
-      }
-
+      serverErrorCheck(response);
       getElements(response);
+      noResultCheck(response);
     })();
   });
 
@@ -62,14 +79,9 @@ $(document).ready(function() {
       let betterDoctorService = new BetterDoctorService();
       let response = await betterDoctorService.findDoctorByDoctorName(doctorName);
 
-      // DISPLAY ERROR CHECKER
-      if ((typeof response) == "string") {
-        $("#errorToggle").text("We're sorry, there was a "+response);
-      } else {
-        $("#errorToggle").text("Click on a name for more information.");
-      }
-
+      serverErrorCheck(response);
       getElements(response);
+      noResultCheck(response);
     })();
   });
 
