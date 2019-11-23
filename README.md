@@ -34,11 +34,11 @@ This project was made as part of a coding project for Noah Horwitz, a student at
 
 |Spec|Input|Output|
 |-|-|-|
-|A user should be able to enter a medical issue to receive a list of doctors in the Portland area that fit the search query.|`Rash`|* Doc1 * Doc2 * Doc3 * ...|
-|A user should be able to enter a name to receive a list of doctors in the Portland area that fit the search query.|||
-|If the query response includes any doctors, the following information should be included about each doctor: first name, last name, address, phone number, website and whether or not the doctor is accepting new patients (the API provides this data).|||
-|If the API call results in an error (any message not a 200 OK), the application should return a notification that states what the error is.|||
-|If the query response doesn't include any doctors (for instance, if no doctors meet the search criteria), the application should return a notification that states that no doctors meet the criteria. (This is not an error so it should be handled separately from any errors.)|||
+|A user should be able to enter a medical issue to receive a list of doctors in the Portland area that fit the search query.|`ear-ache`|`* Deborah Altemus, DO.` `* Gregory Gramstad, MD.` `* Phillip Wackym, MD.` `* ...`|
+|A user should be able to enter a name to receive a list of doctors in the Portland area that fit the search query.|`Sean`|`* Sean Sweeney, DO.` `* Sean Herrin, DC.` `* Sean Orenstein, MD.` `* ...`|
+|If the query response includes any doctors, the following information should be included about each doctor: first name, last name, address, phone number, website and whether or not the doctor is accepting new patients (the API provides this data).|`Sean Sweeney, DO.`|`* Practice: Sean Sweeney, DO` `* Address: 2801 N Gantenbein Ave Portland, OR 97227` `* Phone: 5032766500` `* Website: None provided.` `* Accepting new patients: true`|
+|If the API call results in an error (any message not a 200 OK), the application should return a notification that states what the error is.|404 not found|`We're sorry, there was a NetworkError when attempting to fetch resource.`|
+|If the query response doesn't include any doctors (for instance, if no doctors meet the search criteria), the application should return a notification that states that no doctors meet the criteria. (This is not an error so it should be handled separately from any errors.)|`unstoppable sneezing`|`We're sorry, there were no results on your query.`|
 
 
 
